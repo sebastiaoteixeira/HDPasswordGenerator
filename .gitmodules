@@ -1,0 +1,3 @@
+[submodule "lib/bip32"]
+	path = lib/bip32
+	url = https://github.com/sebastiaoteixeira/bip32
