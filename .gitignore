@@ -2,4 +2,4 @@ dist
 build
 __pycache__
 src/hdpassgenerator.egg-info
-lib/hdpassgenerator.egg-info
+lib/bip32.egg-info
