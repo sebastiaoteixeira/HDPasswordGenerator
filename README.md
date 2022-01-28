@@ -9,6 +9,7 @@ UNIX-like systems
 ### Install
     # Clone repository from github (--recursive is required to include submodules)
     git clone https://github.com/sebastiaoteixeira/HDPasswordGenerator.git --recursive
+    cd HDPasswordGenerator
     
     # Install HDPasswordGenerator
     sudo python3 setup.py install
