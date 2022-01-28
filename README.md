@@ -15,5 +15,5 @@ UNIX-like systems
     hdpassgenerator
 
 ## Credits
-- [ismailakkila](https://github.com/ismailakkila/bip32 'BIP32 Implementation using Python')
-  - bip32 implementation
+- [ismailakkila](https://github.com/ismailakkila 'ismailakkila')
+  - [BIP32 Implementation using Python](https://github.com/ismailakkila/bip32 'BIP32 Implementation using Python')
