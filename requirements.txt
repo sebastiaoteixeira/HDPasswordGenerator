@@ -1,0 +1,4 @@
+mnemonic==0.20
+pysqlcipher3==1.0.4
+requests==2.25.1
+setuptools==52.0.0
