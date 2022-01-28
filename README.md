@@ -5,4 +5,11 @@ HDPasswordGenerator is a password generator and manager that offers a solution f
 UNIX-like systems
 
 ## Installation
+    # Clone repository from github
+    git clone https://github.com/sebastiaoteixeira/HDPasswordGenerator.git --recursive
+    
+    # Install HDPasswordGenerator
+    sudo python3 setup.py install
 
+## Run
+    hdpassgenerator
