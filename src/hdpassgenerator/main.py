@@ -94,7 +94,9 @@ def password_menu(wlt):
     Init console in all modules
 """
 def init_console():
+    message = "HIERARCHICAL-DETERMINISTIC PASSWORD GENERATOR\nBy Sebastião Teixeira"
+
     global console
-    console = Console("")
+    console = Console(message)
     wallet.define_console(console)
     generator.define_console(console)
