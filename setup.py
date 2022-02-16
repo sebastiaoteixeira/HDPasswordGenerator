@@ -31,19 +31,18 @@ import os
 print("Downloading...\nIt may take a few minutes")
 url = 'https://gateway.pinata.cloud/ipfs/QmPvcDGMmq6CPGAAQHhGfpp6XQdqTV7SqhbZPhCDwDrVcF/rockyou.txt'
 rockyou = requests.get(url)
-open(__file__[:(len(__file__)-8)] + 'src/hdpassgenerator/rockyou.txt', 'wb').write(rockyou.content)
+open(__file__[:(len(__file__)-8)] + 'src/hdpassgenerator/wordlist/rockyou.txt', 'wb').write(rockyou.content)
 
 
 setup(
     name="hdpassgenerator",
-    version="0.1.0",
+    version="0.2.0",
     author="Sebastião Teixeira",
     description="Hierarchical Deterministic Password Generator",
     packages=["hdpassgenerator"],
     package_dir={"": "src"},
     package_data={
-        "": ["wordlist/rockyou.txt"],
-        "": ["bip32/*"]
+        "": ["wordlist/rockyou.txt"]
     },
     entry_points={
         'console_scripts': [
@@ -54,7 +53,7 @@ setup(
     zip_safe=False,
     python_requires=">=3.7",
     classifiers=[
-        "License :: OSI Approved :: GPL3 License",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: POSIX :: Linux",
         "Operating System :: Microsoft :: Windows",
         "Operating System :: MacOS :: MacOS X",

@@ -35,40 +35,43 @@ from . import storage
 def run():
     init_console()
 
-    action = int(console.read("Choose action:\n\n0 -> Create a new passwords wallet\n1 -> Open a passwords wallet\n2 -> Recover a passwords wallet\n"))
-
-    if (action == 0 or action == 2): 
-        wallet_name = console.read("Insert the wallet name:")
-    elif (action == 1):
-        wallet_name = console.read("Available Wallets:\n -> " + "\n -> ".join(storage.get_wallet_list()) + "\n\nInsert the wallet name:")
-    else:
-        console.inform("Invalid action. Try again.")
-        return run()
-
-    wlt = wallet.PasswordWallet(wallet_name)
-
-    if (action == 0):
-        wlt.create_wallet()
-    elif (action == 1):
-        wlt.load_wallet()
-    elif (action == 2):
-        wlt.recover_wallet()
-
+    wlt = wallet_menu()
     password_menu(wlt)
 
     return
 
+
+def wallet_menu():
+    success = False
+    while (not success):
+        action = int(console.read("Choose action:\n\n0 -> Create a new passwords wallet\n1 -> Open a passwords wallet\n2 -> Recover a passwords wallet\n"))
+
+        if (action == 0 or action == 2): 
+            wallet_name = console.read("Insert the wallet name:")
+        elif (action == 1):
+            wallet_name = console.read("Available Wallets:\n -> " + "\n -> ".join(storage.get_wallet_list()) + "\n\nInsert the wallet name:")
+        else:
+            console.inform("Invalid action. Try again.")
+            return run()
+
+        wlt = wallet.PasswordWallet(wallet_name)
+
+        if (action == 0):
+            success = wlt.create_wallet()
+        elif (action == 1):
+            success = wlt.load_wallet()
+        elif (action == 2):
+            success = wlt.recover_wallet()
+    return wlt
 
 """
     Go to passwords menu
     @param wlt -> PasswordWallet()
 """
 def password_menu(wlt):
-    read = int(console.read("Choose action:\n\n0 -> Generate a new password\n1 -> Read passwords\n"))
+    read = int(console.read("Choose action:\n\n0 -> Generate a new password\n1 -> Read passwords\n2 -> Change wallet\n3 -> Exit\n"))
 
-    if read:
-        pass
-    else:
+    if (read == 0):
         password_gen = generator.PasswordGenerator(wlt)
         service = console.read("Service (i.e. example.org):")
         login = console.read("Account Login (i.e. user123):", new_page=False)
@@ -76,6 +79,14 @@ def password_menu(wlt):
         password_length = 15 if password_length == "" else int(password_length)
         password = password_gen.generate_valid_password(0, service, login, 0, password_length)
         console.inform("\n    " + password)
+    elif (read == 1):
+        pass
+    elif (read == 2):
+        run()
+        return
+    elif (read == 3):
+        return
+
     password_menu(wlt)
 
 
