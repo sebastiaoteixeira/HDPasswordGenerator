@@ -36,7 +36,7 @@ open(__file__[:(len(__file__)-8)] + 'src/hdpassgenerator/wordlist/rockyou.txt', 
 
 setup(
     name="hdpassgenerator",
-    version="0.2.0",
+    version="0.2.1",
     author="Sebastião Teixeira",
     description="Hierarchical Deterministic Password Generator",
     packages=["hdpassgenerator"],
