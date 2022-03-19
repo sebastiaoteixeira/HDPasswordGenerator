@@ -23,6 +23,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import pandas as pd
 from . import generator
 from .console import Console
 from . import wallet
@@ -44,7 +45,7 @@ def run():
 def wallet_menu():
     success = False
     while (not success):
-        action = int(console.read("Choose action:\n\n0 -> Create a new passwords wallet\n1 -> Open a passwords wallet\n2 -> Recover a passwords wallet\n"))
+        action = int(console.read("Choose action:\n\n0 -> Create a new passwords wallet\n1 -> Open a passwords wallet\n2 -> Recover a passwords wallet"))
 
         if (action == 0 or action == 2): 
             wallet_name = console.read("Insert the wallet name:")
@@ -69,7 +70,7 @@ def wallet_menu():
     @param wlt -> PasswordWallet()
 """
 def password_menu(wlt):
-    read = int(console.read("Choose action:\n\n0 -> Generate a new password\n1 -> Read passwords\n2 -> Change wallet\n3 -> Exit\n"))
+    read = int(console.read("Choose action:\n\n0 -> Generate a new password\n1 -> Read passwords\n2 -> Change wallet\n3 -> Exit"))
 
     if (read == 0):
         password_gen = generator.PasswordGenerator(wlt)
@@ -80,7 +81,28 @@ def password_menu(wlt):
         password = password_gen.generate_valid_password(0, service, login, 0, password_length)
         console.inform("\n    " + password)
     elif (read == 1):
-        pass
+        password_gen = generator.PasswordGenerator(wlt)
+
+        walletdata_dict = {
+            'Service' : [password_data[2] for password_data in wlt.wallet_data],
+            'Login'   : [password_data[3] for password_data in wlt.wallet_data],
+            'Length'  : [password_data[6] for password_data in wlt.wallet_data]
+        }
+
+        df = pd.DataFrame(walletdata_dict)
+
+        while True:
+            try:
+                password_index = int(console.read(df))
+                if password_index < len(wlt.wallet_data) and (password_index >= 0):
+                    break
+                else:
+                    console.inform("Invalid input! Try again.")
+            except ValueError:
+                console.inform("Invalid input! Try again.")
+
+        password = password_gen.generate_valid_password(0, wlt.wallet_data[password_index][2], wlt.wallet_data[password_index][3], 0, wlt.wallet_data[password_index][6])
+        console.inform("\n    " + password)
     elif (read == 2):
         run()
         return
@@ -88,6 +110,7 @@ def password_menu(wlt):
         return
 
     password_menu(wlt)
+
 
 
 """

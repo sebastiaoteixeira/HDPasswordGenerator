@@ -116,6 +116,7 @@ class PasswordGenerator:
             valid_password_derivation += 1
         
         storage.save_data(self.wallet.name, dbpassword, user, service, account, order_id, self.derivation_path, length)
+        self.wallet.load_wallet(dbpassword)
         return password[:length]
 
     """

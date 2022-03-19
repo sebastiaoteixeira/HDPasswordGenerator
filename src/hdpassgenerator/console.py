@@ -57,6 +57,7 @@ class Console:
         else:
             print("")
         print(message)
+        print("\n")
         if secret:
             return getpass(">> ")
         return input(">> ")

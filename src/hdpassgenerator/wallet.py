@@ -143,8 +143,9 @@ class PasswordWallet():
     """
         Load wallet data
     """
-    def load_wallet(self):
-        dbpassword = console.get_dbpassword()
+    def load_wallet(self, dbpassword=None):
+        if dbpassword == None:
+            dbpassword = console.get_dbpassword()
         if not storage.wallet_exists(self.name):
             console.inform("Name or password incorrect\nTry again!")
             return False
