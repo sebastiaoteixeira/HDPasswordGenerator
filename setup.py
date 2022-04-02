@@ -29,14 +29,14 @@ import os
 
 # Download rockyou list
 print("Downloading...\nIt may take a few minutes")
-url = 'https://gateway.pinata.cloud/ipfs/QmPvcDGMmq6CPGAAQHhGfpp6XQdqTV7SqhbZPhCDwDrVcF/rockyou.txt'
+url = 'https://bafybeiaxr2ofxqe5wygkdlcutiqpfalf6f2rxuagmnnk5bmh3t6ikjiysq.ipfs.infura-ipfs.io/rockyou.txt'
 rockyou = requests.get(url)
 open(__file__[:(len(__file__)-8)] + 'src/hdpassgenerator/wordlist/rockyou.txt', 'wb').write(rockyou.content)
 
 
 setup(
     name="hdpassgenerator",
-    version="1.0.0",
+    version="1.0.1",
     author="Sebastião Teixeira",
     description="Hierarchical Deterministic Password Generator",
     packages=["hdpassgenerator"],

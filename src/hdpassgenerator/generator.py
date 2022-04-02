@@ -55,10 +55,12 @@ class PasswordGenerator:
     """
         Verify if password is valid
     """
-    def is_password_valid(self, password):
+    def is_password_valid(self, password, length):
         # Minimum Length - 50
         if (len(password) < 50):
             return False
+
+        password = password[:length]
 
         # First/Last character cannot be a space
         if (password[0] == " " or password[(len(password)-1)] == " "):
@@ -109,7 +111,7 @@ class PasswordGenerator:
         while True:
             self.derivation_path.append(valid_password_derivation)
             password = self.generate_hash(msg, dbpassword)
-            if self.is_password_valid(password):
+            if self.is_password_valid(password, length):
                 break
 
             self.derivation_path.pop(len(self.derivation_path) - 1)
