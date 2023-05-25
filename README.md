@@ -9,6 +9,10 @@ UNIX-like systems
     git clone https://github.com/sebastiaoteixeira/HDPasswordGenerator.git --recursive
     cd HDPasswordGenerator
     
+    # Install Dependencies
+    sudo apt install sqlcipher libsqlcipher0 libsqlcipher-dev
+    pip install -r requirements.txt
+    
     # Install HDPasswordGenerator
     sudo python3 setup.py install
 
