@@ -10,7 +10,7 @@ UNIX-like systems
     cd HDPasswordGenerator
     
     # Install Dependencies
-    sudo apt install sqlcipher libsqlcipher0 libsqlcipher-dev
+    sudo apt install sqlite3 sqlcipher libsqlcipher0 libsqlcipher-dev
     pip install -r requirements.txt
     
     # Install HDPasswordGenerator
